@@ -53,7 +53,7 @@ class TextOnlyModel(BaseModel):
 class ImageOnlyModel(BaseModel):
     def __init__(self, save_dir, dim_visual_repr=1000, num_class=2):
         super(ImageOnlyModel, self).__init__(save_dir=save_dir)
-
+        torch.hub._validate_not_a_forked_repo=lambda a,b,c: True
         self.imageEncoder = torch.hub.load(
             'pytorch/vision:v0.8.0', 'densenet201', pretrained=True)
         self.flatten_vis = nn.Flatten()
@@ -80,6 +80,7 @@ class DenseNetBertMMModel(MMModel):
         # imageEncoder = torch.hub.load(
         #     'pytorch/vision:v0.8.0', 'densenet121', pretrained=True)
         # imageEncoder = torch.hub.load('pytorch/vision:v0.8.0', 'densenet169', pretrained=True)
+        torch.hub._validate_not_a_forked_repo=lambda a,b,c: True
         imageEncoder = torch.hub.load(
             'pytorch/vision:v0.8.0', 'densenet201', pretrained=True)
         # imageEncoder= torch.hub.load('pytorch/vision:v0.8.0', 'densenet161', pretrained=True)
