@@ -74,15 +74,15 @@ class DenseNetBertMMModel(MMModel):
 
         self.dim_visual_repr = dim_visual_repr
         self.dim_text_repr = dim_text_repr
-
+        #densenet201
         # DenseNet: https://pytorch.org/hub/pytorch_vision_densenet/
         # The authors did not mention which one they used.
         # imageEncoder = torch.hub.load(
-        #     'pytorch/vision:v0.8.0', 'densenet121', pretrained=True)
+        #     'pytorch/vision:v0.8.0', 'resnet34', pretrained=True)
         # imageEncoder = torch.hub.load('pytorch/vision:v0.8.0', 'densenet169', pretrained=True)
         torch.hub._validate_not_a_forked_repo=lambda a,b,c: True
         imageEncoder = torch.hub.load(
-            'pytorch/vision:v0.8.0', 'densenet201', pretrained=True)
+            'pytorch/vision:v0.8.0', 'resnet34', pretrained=True)
         # imageEncoder= torch.hub.load('pytorch/vision:v0.8.0', 'densenet161', pretrained=True)
 
         # Bert model: https://huggingface.co/transformers/model_doc/auto.html
