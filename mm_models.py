@@ -55,7 +55,7 @@ class ImageOnlyModel(BaseModel):
         super(ImageOnlyModel, self).__init__(save_dir=save_dir)
         torch.hub._validate_not_a_forked_repo=lambda a,b,c: True
         self.imageEncoder = torch.hub.load(
-            'pytorch/vision:v0.8.0', 'densenet201', pretrained=True)
+            'pytorch/vision:v0.8.0', 'resnet34', pretrained=True)
         self.flatten_vis = nn.Flatten()
         self.linear = nn.Linear(dim_visual_repr, num_class)
         self.dropout = nn.Dropout()
